@@ -310,6 +310,135 @@ def exercicio17():
     for i in range(len(nome)):
         print(f'{i+1}° nome da lista é: {nome[i]}')
 
+def exercicio18():
+    import os
+
+    tarefas = []
+
+    while True:
+        os.system('cls')
+        nova_tarefa = input("Digite a nova tarefa (ou deixe em branco para encerrar): ")
+        if nova_tarefa== '':
+            break
+        tarefas.append(nova_tarefa)
+
+    os.system('cls')
+    print("Lista de Tarefas Final:")
+    for i in range(len(tarefas)):
+        print(f'{i + 1}° tarefa: {tarefas[i]}')
+
+    print("\nPrograma encerrado.")
+
+def exercicio20():
+    import os,time
+    from os import system
+    lista_cpf = ['123456', '2345678', '985674']
+    lista_usuarios = ['Henrique', 'Gomes', 'Carlos']
+    system("cls")
+
+
+    while True:
+        print('=' * 30, 'Bem vindo ao sistema de cadastro', '=' * 30)
+        print('1. Cadastrar Usuário')
+        print('2. Consultar Usuário')
+        print('3. Acessar o Sistema')
+        print('4. Remover um Usuário')
+        print('6. Sair')
+
+        opcao = input('Digite a opção desejada: ')
+
+        if opcao == '1':
+            system("cls")
+
+            novo_nome = input("Adicione novo nome: ")
+            novo_cpf = input("Adicione novo CPF: ")
+
+            if novo_cpf in lista_cpf:
+                print("CPF já cadastrado!")
+            else:
+                lista_cpf.append(novo_cpf)
+                lista_usuarios.append(novo_nome)
+                print("Usuário cadastrado com sucesso")
+
+        elif opcao == '2':
+            system("cls")
+
+            print("Usuários cadastrados:")
+
+            for i in range(len(lista_usuarios)):
+                print(f'{i + 1}° usuário: {lista_usuarios[i]}')
+
+        elif opcao == '3':
+            system("cls")
+
+            cpf_login = input("Digite o seu CPF: ")
+
+            if cpf_login in lista_cpf:
+                print("Acesso realizado com sucesso")
+            else:
+                print("Usuário não cadastrado")
+
+        elif opcao == '4':
+            system("cls")
+
+            dcpf = input("Digite o CPF que deseja remover: ")
+
+            if dcpf in lista_cpf:
+                indice = lista_cpf.index(dcpf)
+                nome = lista_usuarios.pop(indice)
+                lista_cpf.pop(indice)
+                print(f'Usuário: {nome} com o CPF {dcpf} foi removido com sucesso')
+            else:
+                print("CPF não encontrado")
+
+        elif opcao == '6':
+            system("cls")
+
+            print("Programa finalizado")
+            break
+
+        else:
+            print("Opção inválida. Tente novamente.")
+
+def exercicio21():
+    import random
+    lista=['goiaba','banana']
+
+    palavra=random.choice(lista)
+    tentativas=10
+    acerto=[]
+    erro=[]
+
+    while True:
+        palavra_escondida=''
+        for letra in palavra:
+            if letra in acerto:
+                palavra_escondida+=letra
+            else:
+                palavra_escondida+='_'
+        print('palavra:', palavra_escondida)
+        print('letras erradas', erro)
+        print('tentativas restantes', tentativas)
+
+        if palavra_escondida == palavra:
+            print('você acertou!')
+            break
+        elif tentativas==0:
+            print("vc perdeu a palavra era: ",palavra)
+            break
+
+        chute=input("escolhe a primeira letra: ").lower()
+
+        if chute in palavra:
+            print("letra correta")
+            acerto.append(chute)
+        else:
+            print('letra incorreta')
+            erro.append(chute)
+            tentativas-=1
+
+
+
 exercicios = {
     1: exercicio1,
     2: exercicio2,
