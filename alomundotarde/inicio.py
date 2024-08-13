@@ -1,4 +1,5 @@
 from classes.matematica import Matematica
+from classes.timefut import Timefut
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -18,4 +19,12 @@ def calcular():
     resposta = mat.somar()
     return render_template('calculo.html', resultado=resposta)
 
-app.run() # não esquecer
+@app.route('/listatimes')
+def listar_times():
+    t1 = Timefut('Palmeiras',10)
+    t2 = Timefut('Botafogo',10)
+    t3 = Timefut('Flamengo',10)
+    lista=[t1,t2,t3]
+    return render_template('listatimes.html', times=lista)
+
+app.run(debug=True) # não esquecer
