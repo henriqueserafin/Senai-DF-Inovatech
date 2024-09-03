@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    return render_template("top10_imigrantes2.html")
+    return render_template("imigrantes_brasil.html")
 
 
 
